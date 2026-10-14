@@ -1,0 +1,1506 @@
+@prefix : <http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@base <http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/> .
+
+<http://www.semanticweb.org/uzoma/ontologies/2025/9/resume> rdf:type owl:Ontology ;
+                                                             owl:imports foaf: .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/displayName
+:displayName rdf:type owl:AnnotationProperty ;
+             rdfs:label "displayName"@en .
+
+
+###  http://www.w3.org/2000/01/rdf-schema#comment
+rdfs:comment rdfs:range rdfs:Literal ;
+             rdfs:domain foaf:Project .
+
+
+###  http://xmlns.com/foaf/0.1/birthday
+foaf:birthday rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/firstName
+foaf:firstName rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/lastName
+foaf:lastName rdf:type owl:AnnotationProperty .
+
+
+###  http://xmlns.com/foaf/0.1/status
+foaf:status rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#hasProject
+:hasProject rdf:type owl:ObjectProperty ;
+            rdfs:domain foaf:Person ;
+            rdfs:range foaf:Project ;
+            rdfs:label "has project"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#hasSocial
+:hasSocial rdf:type owl:ObjectProperty ;
+           rdfs:domain foaf:Person ;
+           rdfs:range :Socials ;
+           rdfs:label "has social"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#provideService
+:provideService rdf:type owl:ObjectProperty ;
+                rdfs:domain foaf:Person ;
+                rdfs:range :Service ;
+                rdfs:label "provides services"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/degreeLevel
+:degreeLevel rdf:type owl:ObjectProperty ;
+             rdfs:domain :Course ;
+             rdfs:range :Degree ;
+             rdfs:label "at degree level"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/doneAt
+:doneAt rdf:type owl:ObjectProperty ;
+        rdfs:domain :Education ,
+                    :WorkExperience ;
+        rdfs:range foaf:Organization ;
+        rdfs:label "done at"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasAchievement
+:hasAchievement rdf:type owl:ObjectProperty ;
+                rdfs:domain foaf:Person ;
+                rdfs:range :Certification ;
+                rdfs:label "has achieved a certificate"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasCategory
+:hasCategory rdf:type owl:ObjectProperty ;
+             rdfs:domain :Certification ,
+                         :Skills ,
+                         :WorkExperience ,
+                         foaf:Project ;
+             rdfs:range :Entry_type ;
+             rdfs:label "is categorized as"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasCourse
+:hasCourse rdf:type owl:ObjectProperty ;
+           rdfs:domain foaf:Organization ;
+           rdfs:range :Course ;
+           rdfs:label "provides course"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasDuty
+:hasDuty rdf:type owl:ObjectProperty ;
+         rdfs:domain :WorkExperience ,
+                     foaf:Project ;
+         rdfs:range :Duties ;
+         rdfs:label "has following duties"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasEducation
+:hasEducation rdf:type owl:ObjectProperty ;
+              rdfs:domain foaf:Person ;
+              rdfs:range :Education ;
+              rdfs:label "has education"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasExperience
+:hasExperience rdf:type owl:ObjectProperty ;
+               rdfs:domain foaf:Person ;
+               rdfs:range :WorkExperience ;
+               rdfs:label "has experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasSkill
+:hasSkill rdf:type owl:ObjectProperty ;
+          rdfs:domain foaf:Person ;
+          rdfs:range :Skills ;
+          rdfs:label "is skilled at"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/locatedIn
+:locatedIn rdf:type owl:ObjectProperty ;
+           rdfs:domain :City ,
+                       foaf:Organization ;
+           rdfs:range :City ,
+                      :Country ;
+           rdfs:label "located in"@en .
+
+
+###  http://xmlns.com/foaf/0.1/theme
+foaf:theme rdf:type owl:ObjectProperty ;
+           rdfs:domain foaf:Project ;
+           rdfs:range skos:Concept ;
+           rdfs:label "is classified as"@en .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://purl.org/dc/elements/1.1/description
+dc:description rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Duties ;
+               rdfs:range rdfs:Literal .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/endDate
+:endDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Certification ,
+                     :Education ,
+                     :WorkExperience ;
+         rdfs:range xsd:dateTime ;
+         rdfs:label "endDate"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasAddress
+:hasAddress rdf:type owl:DatatypeProperty ;
+            rdfs:domain foaf:Agent ;
+            rdfs:range rdfs:Literal ;
+            rdfs:label "hasAddress"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasEmail
+:hasEmail rdf:type owl:DatatypeProperty ;
+          rdfs:domain foaf:Person ;
+          rdfs:range rdfs:Literal ;
+          rdfs:label "hasEmail"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasGrade
+:hasGrade rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Degree ;
+          rdfs:range rdfs:Literal ;
+          rdfs:label "hasGrade"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasGradeValue
+:hasGradeValue rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Degree ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasLink
+:hasLink rdf:type owl:DatatypeProperty ;
+         rdfs:domain :Certification .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasPercentage
+:hasPercentage rdf:type owl:DatatypeProperty ;
+               rdfs:domain :DigitalSkill ,
+                           :LanguageSkill ,
+                           :SoftSkill ;
+               rdfs:label "hasPercentage"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/hasPhone
+:hasPhone rdf:type owl:DatatypeProperty ;
+          rdfs:domain foaf:Person ;
+          rdfs:range rdfs:Literal ;
+          rdfs:label "hasPhone"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/startDate
+:startDate rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Education ,
+                       :WorkExperience ;
+           rdfs:range xsd:dateTime ;
+           rdfs:label "startDate"@en .
+
+
+###  http://xmlns.com/foaf/0.1/title
+foaf:title rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Certification ,
+                       :WorkExperience ,
+                       foaf:Project ;
+           rdfs:range rdfs:Literal .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Facebook
+:Facebook rdf:type owl:Class ;
+          rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Github
+:Github rdf:type owl:Class ;
+        rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Instagram
+:Instagram rdf:type owl:Class ;
+           rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#LinkedIn
+:LinkedIn rdf:type owl:Class ;
+          rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Service
+:Service rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Snapchat
+:Snapchat rdf:type owl:Class ;
+          rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Socials
+:Socials rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#Twitter
+:Twitter rdf:type owl:Class ;
+         rdfs:subClassOf :Socials .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Certification
+:Certification rdf:type owl:Class ;
+               rdfs:label "Certification"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/City
+:City rdf:type owl:Class ;
+      rdfs:label "City"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Country
+:Country rdf:type owl:Class ;
+         rdfs:label "Country"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Course
+:Course rdf:type owl:Class ;
+        rdfs:label "Course of Study"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Degree
+:Degree rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DigitalSkill
+:DigitalSkill rdf:type owl:Class ;
+              rdfs:subClassOf :Skills ;
+              rdfs:label "Digital Skill"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Duties
+:Duties rdf:type owl:Class ;
+        rdfs:label "Duties"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Education
+:Education rdf:type owl:Class ;
+           rdfs:label "Education"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Entry_type
+:Entry_type rdf:type owl:Class ;
+            rdfs:label "the type of instance"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LanguageSkill
+:LanguageSkill rdf:type owl:Class ;
+               rdfs:subClassOf :Skills ;
+               rdfs:label "Language Skill"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Skills
+:Skills rdf:type owl:Class ;
+        rdfs:label "Skills"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SoftSkill
+:SoftSkill rdf:type owl:Class ;
+           rdfs:subClassOf :Skills ;
+           rdfs:label "Soft Skill"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WorkExperience
+:WorkExperience rdf:type owl:Class ;
+                rdfs:label "Work Experience"@en .
+
+
+###  http://www.w3.org/2004/02/skos/core#Concept
+skos:Concept rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Agent
+foaf:Agent rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Organization
+foaf:Organization rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+###  http://xmlns.com/foaf/0.1/Project
+foaf:Project rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#FACE001
+:FACE001 rdf:type owl:NamedIndividual ,
+                  :Facebook ;
+         :hasLink "https://www.facebook.com/Uzynice4all" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#GIT001
+:GIT001 rdf:type owl:NamedIndividual ,
+                 :Github ;
+        :hasLink "https://github.com/Uzoma-N" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#INST001
+:INST001 rdf:type owl:NamedIndividual ,
+                  :Instagram ;
+         :hasLink "https://www.instagram.com/sir_uzynice/" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#LINK001
+:LINK001 rdf:type owl:NamedIndividual ,
+                  :LinkedIn ;
+         :hasLink "https://www.linkedin.com/in/uzomanwiwu/" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE001
+:SE001 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Business-driven system analysis and optimization."@en ;
+       foaf:title "Information Systems Analyst"@en ;
+       foaf:status "/assets/icon_analyst.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE002
+:SE002 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Connect, structure, and expose data for seamless semantic interoperability."@en ;
+       foaf:title "Linked Data Expert"@en ;
+       foaf:status "/assets/icon_linked_data.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE003
+:SE003 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Model semantic and graph-based data systems."@en ;
+       foaf:title "Knowledge Graph Engineer"@en ;
+       foaf:status "/assets/icon_knowledge-graph.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE004
+:SE004 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Optimize costs and guide decisions through actionable, data-driven insights."@en ;
+       foaf:title "Cost Optimization & Data-Driven Decision Support"@en ;
+       foaf:status "/assets/icon_cost.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE005
+:SE005 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Design scalable systems that modernize workflows, integrate technologies, and drive enterprise innovation."@en ;
+       foaf:title "Solution Architect for Digital Transformation"@en ;
+       foaf:status "/assets/icon_architect.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SE006
+:SE006 rdf:type owl:NamedIndividual ,
+                :Service ;
+       dc:description "Build robust, secure, and efficient server-side logic to power dynamic, data-driven applications."@en ;
+       foaf:title "Backend Developer"@en ;
+       foaf:status "/assets/icon_developer.png" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#SNAP001
+:SNAP001 rdf:type owl:NamedIndividual ,
+                  :Snapchat .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#TWIT001
+:TWIT001 rdf:type owl:NamedIndividual ,
+                  :Twitter .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE001
+:CE001 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Software ;
+       :endDate "2020-11-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/3U5A2Z9V7576"^^xsd:anyURI ;
+       foaf:title "Google IT Support Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE002
+:CE002 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Software ;
+       :endDate "2021-01-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/certificate/7QM2R9ZPHQFE"^^xsd:anyURI ;
+       foaf:title "Neural Network and Deep Learning"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE003
+:CE003 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Software ;
+       :endDate "2023-04-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.credly.com/badges/aaf25321-8af6-4eaf-a578-ee9238778674/public_url"^^xsd:anyURI ;
+       foaf:title "Applied Data Science Lab"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE004
+:CE004 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Industrial ;
+       :endDate "2023-07-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/certificate/LXR3ETKTM6EE"^^xsd:anyURI ;
+       foaf:title "Understanding the Enterprise Systems Environment"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE005
+:CE005 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Industrial ;
+       :endDate "2023-07-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/certificate/XL5E24WDQCWL"^^xsd:anyURI ;
+       foaf:title "SAP Professional Fundamentals"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE006
+:CE006 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Industrial ,
+                    :Software ;
+       :endDate "2023-09-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/certificate/K9EBKUR3QMF5"^^xsd:anyURI ;
+       foaf:title "Agile Project Management"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE007
+:CE007 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Software ;
+       :endDate "2023-10-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/8S8TSVEKZPBZ"^^xsd:anyURI ;
+       foaf:title "Software Design and Architecture Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE008
+:CE008 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Software ;
+       :endDate "2023-11-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/8VXUXU7NE9PK"^^xsd:anyURI ;
+       foaf:title "Big Data Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE009
+:CE009 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Industrial ;
+       :endDate "2024-03-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/FUQGAEBE2YVP"^^xsd:anyURI ;
+       foaf:title "Digital Technologies and the Future of Manufacturing Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE010
+:CE010 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ,
+                    :Industrial ;
+       :endDate "2024-06-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/KES6TZCF4386"^^xsd:anyURI ;
+       foaf:title "Microsoft Power BI Data Analyst Professional Certificate Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE011
+:CE011 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Software ;
+       :endDate "2024-06-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/specialization/certificate/7TWPH34CG38F"^^xsd:anyURI ;
+       foaf:title "Core Java Specialization"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CE012
+:CE012 rdf:type owl:NamedIndividual ,
+                :Certification ;
+       :hasCategory :Database ;
+       :endDate "2025-09-15T00:00:00"^^xsd:dateTime ;
+       :hasLink "https://www.coursera.org/account/accomplishments/certificate/QW7J7HAZRCQ6"^^xsd:anyURI ;
+       foaf:title "Relational Database Design"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CO001
+:CO001 rdf:type owl:NamedIndividual ,
+                :Course ;
+       :degreeLevel :DE001 ;
+       foaf:title "Electrical and Electronics Engineering"@en ;
+       rdfs:comment "EEE"^^rdfs:Literal ;
+       rdfs:label "First course studied"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CO002
+:CO002 rdf:type owl:NamedIndividual ,
+                :Course ;
+       :degreeLevel :DE002 ;
+       foaf:title "Informatics and Computer Engineering"@en ;
+       rdfs:label "Second course studied"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CO003
+:CO003 rdf:type owl:NamedIndividual ,
+                :Course ;
+       :degreeLevel :DE003 ;
+       foaf:title "International Mechatronics"@en ;
+       rdfs:label "Third course studied"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CO004
+:CO004 rdf:type owl:NamedIndividual ,
+                :Course .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/CO005
+:CO005 rdf:type owl:NamedIndividual ,
+                :Course .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ControlSystem
+:ControlSystem rdf:type owl:NamedIndividual ,
+                        skos:Concept ;
+               rdfs:label "Control System"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DE001
+:DE001 rdf:type owl:NamedIndividual ,
+                :Degree ;
+       :hasGrade "Second Class Honours (Upper Division)"@en ;
+       :hasGradeValue "3.8/5.0" ;
+       foaf:title "Bachelor of Engineering in Electrical and Electronics Engineering"@en ;
+       rdfs:label "First degree" ;
+       foaf:status "Bachelor of Engineering"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DE002
+:DE002 rdf:type owl:NamedIndividual ,
+                :Degree ;
+       :hasGrade "Distinction"@en ;
+       :hasGradeValue "4.8/5.0" ;
+       foaf:title "Master of Science in Informatics and Computer Engineering"@en ;
+       rdfs:label "Second degree" ;
+       foaf:status "Master of Science"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DE003
+:DE003 rdf:type owl:NamedIndividual ,
+                :Degree ;
+       :hasGrade "Good"@en ;
+       :hasGradeValue "1.7" ;
+       foaf:title "Master of Science in International Mechatronics"@en ;
+       foaf:status "Master of Science"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DE004
+:DE004 rdf:type owl:NamedIndividual ,
+                :Degree .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DE005
+:DE005 rdf:type owl:NamedIndividual ,
+                :Degree .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DISK001
+:DISK001 rdf:type owl:NamedIndividual ,
+                  :DigitalSkill ;
+         :hasCategory :Database ,
+                      :Research ,
+                      :Software ;
+         dc:description "Machine Learning / Minitab / SQL / Power BI / SPARQL"^^rdfs:Literal ;
+         :hasPercentage 90 ;
+         foaf:title "Data Analysis"@en ;
+         foaf:status "90%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DISK002
+:DISK002 rdf:type owl:NamedIndividual ,
+                  :DigitalSkill ;
+         :hasCategory :Database ,
+                      :Research ,
+                      :Software ;
+         dc:description "Git / Semantic Web / Ontology Modelling / Agile Management / Figma / Object Oriented Programming / Python, C#, Java, Visual Basic / Clean Code / Knowledge Graph Design / Visual Studio, Visual Studio Code, PyCharm, Eclipse / MATLAB / IoT / Arduino"^^rdfs:Literal ;
+         :hasPercentage 85 ;
+         foaf:title "Software Development and Methodology"@en ;
+         foaf:status "85%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DISK003
+:DISK003 rdf:type owl:NamedIndividual ,
+                  :DigitalSkill ;
+         :hasCategory :Database ,
+                      :Software ;
+         dc:description "HTML / CSS / Javascript / jQuery"^^rdfs:Literal ;
+         :hasPercentage 65 ;
+         foaf:title "Web Design"@en ;
+         foaf:status "65%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DISK004
+:DISK004 rdf:type owl:NamedIndividual ,
+                  :DigitalSkill ;
+         :hasCategory :Industrial ,
+                      :Research ;
+         dc:description "Ansys / SolidWorks / AutoCAD 2D - 3D / nTopology"^^rdfs:Literal ;
+         :hasPercentage 55 ;
+         foaf:title "Computer Aided Design"@en ;
+         foaf:status "55%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DISK005
+:DISK005 rdf:type owl:NamedIndividual ,
+                  :DigitalSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU001
+:DU001 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Improved plant productivity through process optimization and continuous improvement initiatives."^^rdfs:Literal ;
+       foaf:title "Improved plant productivity through process optimization and continuous improvement initiatives."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU002
+:DU002 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Reduced maintenance duration while ensuring compliance with industry safety standards and regulations."^^rdfs:Literal ;
+       foaf:title "Reduced maintenance duration while ensuring compliance with industry safety standards and regulations."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU003
+:DU003 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Tested and commissioned control systems, resolving issues and verifying real-world performance and reliability."^^rdfs:Literal ;
+       foaf:title "Tested and commissioned control systems, resolving issues and verifying real-world performance and reliability."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU004
+:DU004 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Researched methods and standard practices to analyze the effect of oxygen in the production process to understand alternative processes better."^^rdfs:Literal ;
+       foaf:title "Researched methods and standard practices to analyze the effect of oxygen in the production process to understand alternative processes better."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU005
+:DU005 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Demonstrated advanced proficiency in precisely modeling intricate 3D structures using SOLIDWORKS and AutoCAD."^^rdfs:Literal ;
+       foaf:title "Demonstrated advanced proficiency in precisely modeling intricate 3D structures using SOLIDWORKS and AutoCAD."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU006
+:DU006 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Carried out cleanroom activities such as etching and lithography on wafer substrates to define patterns."^^rdfs:Literal ;
+       foaf:title "Carried out cleanroom activities such as etching and lithography on wafer substrates to define patterns."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU007
+:DU007 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Utilized additive manufacturing techniques such as FDM, SLA, and SLS for 3D-printing intricate components, showcasing expertise in precision engineering."^^rdfs:Literal ;
+       foaf:title "Utilized additive manufacturing techniques such as FDM, SLA, and SLS for 3D-printing intricate components, showcasing expertise in precision engineering."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU008
+:DU008 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Prototyped lattice structures to optimize automotive components by analyzing surface design, materials, and manufacturing processes."^^rdfs:Literal ;
+       foaf:title "Prototyped lattice structures to optimize automotive components by analyzing surface design, materials, and manufacturing processes."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU009
+:DU009 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Designed mechanical systems for automotive seating using CAD tools and advanced prototyping techniques."^^rdfs:Literal ;
+       foaf:title "Designed mechanical systems for automotive seating using CAD tools and advanced prototyping techniques."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU010
+:DU010 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Led development of trim attachment methods for lattice structures, ensuring thorough documentation and IP compliance."^^rdfs:Literal ;
+       foaf:title "Led development of trim attachment methods for lattice structures, ensuring thorough documentation and IP compliance."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU011
+:DU011 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Improved production quality through additive manufacturing analysis (Minitab, charts) and FMEA-based prototype testing under high constraints."^^rdfs:Literal ;
+       foaf:title "Improved production quality through additive manufacturing analysis (Minitab, charts) and FMEA-based prototype testing under high constraints."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU012
+:DU012 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Quantified residual stress effects on structural integrity to support accurate digital twin development."^^rdfs:Literal ;
+       foaf:title "Quantified residual stress effects on structural integrity to support accurate digital twin development."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU013
+:DU013 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Performed exploratory data analysis using statistical methods, MATLAB, and machine learning to extract insights from large datasets."^^rdfs:Literal ;
+       foaf:title "Performed exploratory data analysis using statistical methods, MATLAB, and machine learning to extract insights from large datasets."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU014
+:DU014 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Developed automation scripts in C# and Python for test data acquisition and database organization to streamline analysis workflows."^^rdfs:Literal ;
+       foaf:title "Developed automation scripts in C# and Python for test data acquisition and database organization to streamline analysis workflows."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU015
+:DU015 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Applied Git and agile methodologies for efficient code management, iterative development, and cross-functional collaboration."^^rdfs:Literal ;
+       foaf:title "Applied Git and agile methodologies for efficient code management, iterative development, and cross-functional collaboration."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU016
+:DU016 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Designed ontology patterns to model distortions in the fake news ecosystem using DCAT, SKOS, MLS, DOAM, and DCMI metadata standards."^^rdfs:Literal ;
+       foaf:title "Designed ontology patterns to model distortions in the fake news ecosystem using DCAT, SKOS, MLS, DOAM, and DCMI metadata standards."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU017
+:DU017 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Developed and validated knowledge graph models with RDF, OWL, SHACL, SPARQL, and Cypher, supporting semantic interoperability and data integrity."^^rdfs:Literal ;
+       foaf:title "Developed and validated knowledge graph models with RDF, OWL, SHACL, SPARQL, and Cypher, supporting semantic interoperability and data integrity."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU018
+:DU018 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Enhanced Trav-SHACL tooling to support TTL/JSON formats, logical OR operations, and standardized SHACL reporting for improved validation workflows."^^rdfs:Literal ;
+       foaf:title "Enhanced Trav-SHACL tooling to support TTL/JSON formats, logical OR operations, and standardized SHACL reporting for improved validation workflows."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU019
+:DU019 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Contributed to scalable software architecture, including UML-based design, Python module reviews, Docker Compose orchestration, and rigorous testing for quality assurance."^^rdfs:Literal ;
+       foaf:title "Contributed to scalable software architecture, including UML-based design, Python module reviews, Docker Compose orchestration, and rigorous testing for quality assurance."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU020
+:DU020 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Prepared and organized pre-sorted pallets for seamless delivery, optimizing logistics operations and contributing to on-time dispatches."^^rdfs:Literal ;
+       foaf:title "Prepared and organized pre-sorted pallets for seamless delivery, optimizing logistics operations and contributing to on-time dispatches."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU021
+:DU021 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Utilized hand-held scanners for real-time tracking and inventory management, enhancing accuracy and efficiency in warehouse operations."^^rdfs:Literal ;
+       foaf:title "Utilized hand-held scanners for real-time tracking and inventory management, enhancing accuracy and efficiency in warehouse operations."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU022
+:DU022 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Delivered linked data solutions across V-model development teams, boosting information transparency and accessibility by 80%."^^rdfs:Literal ;
+       foaf:title "Delivered linked data solutions across V-model development teams, boosting information transparency and accessibility by 80%."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU023
+:DU023 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Spearheaded a cost-optimization system for component tracking, improving product quality and cutting costs by 15% through strategic data accessibility."^^rdfs:Literal ;
+       foaf:title "Spearheaded a cost-optimization system for component tracking, improving product quality and cutting costs by 15% through strategic data accessibility."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DU024
+:DU024 rdf:type owl:NamedIndividual ,
+                :Duties ;
+       dc:description "Analyzed V-model structures and data flows, developed semantic models, and led sustainable linked data implementation."^^rdfs:Literal ;
+       foaf:title "Analyzed V-model structures and data flows, developed semantic models, and led sustainable linked data implementation."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/DataAnalysis
+:DataAnalysis rdf:type owl:NamedIndividual ,
+                       skos:Concept ;
+              rdfs:label "Data Analysis"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Database
+:Database rdf:type owl:NamedIndividual ,
+                   :Entry_type .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ED001
+:ED001 rdf:type owl:NamedIndividual ,
+                :Education ;
+       :doneAt :Sch001 ;
+       :hasCourse :CO001 ;
+       :endDate "2014-07-17T00:00:00"^^xsd:dateTime ;
+       :startDate "2009-09-11T00:00:00"^^xsd:dateTime ;
+       rdfs:label "First education detail"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ED002
+:ED002 rdf:type owl:NamedIndividual ,
+                :Education ;
+       :doneAt :Sch002 ;
+       :hasCourse :CO002 ;
+       :endDate "2021-10-11T00:00:00"^^xsd:dateTime ;
+       :startDate "2019-09-01T00:00:00"^^xsd:dateTime ;
+       rdfs:label "Second education detail"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ED003
+:ED003 rdf:type owl:NamedIndividual ,
+                :Education ;
+       :doneAt :Sch003 ;
+       :hasCourse :CO003 ;
+       :endDate "2023-12-17T00:00:00"^^xsd:dateTime ;
+       :startDate "2019-10-01T00:00:00"^^xsd:dateTime ;
+       rdfs:label "Third education detail"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ED004
+:ED004 rdf:type owl:NamedIndividual ,
+                :Education .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ED005
+:ED005 rdf:type owl:NamedIndividual ,
+                :Education .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Garbsen
+:Garbsen rdf:type owl:NamedIndividual ,
+                  :City ;
+         :locatedIn :Germany ;
+         rdfs:label "Garbsen"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Germany
+:Germany rdf:type owl:NamedIndividual ,
+                  :Country .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Hannover
+:Hannover rdf:type owl:NamedIndividual ,
+                   :City ;
+          :locatedIn :Germany ;
+          rdfs:label "Hannover"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ibadan
+:Ibadan rdf:type owl:NamedIndividual ,
+                 :City ;
+        :locatedIn :Nigeria ;
+        rdfs:label "Ibadan"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind001
+:Ind001 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Ibadan ;
+        foaf:title "Nigerian Bottling Company Limited"@en ;
+        rdfs:label "First industry worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind002
+:Ind002 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Garbsen ;
+        foaf:title "Institute of Micro-Productions Technology, Leibniz University Hannover"@en ;
+        rdfs:label "Second industry worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind003
+:Ind003 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Hannover ;
+        foaf:title "Forvia Faurecia"@en ;
+        rdfs:label "Third industry worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind004
+:Ind004 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Garbsen ;
+        foaf:title "Institute for Manufacturing technology and Machine tools, Leibniz University Hannover"@en ;
+        rdfs:label "Fourth place worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind005
+:Ind005 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Hannover ;
+        foaf:title "L3S Research Center"@en ;
+        rdfs:label "Fifth place worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind006
+:Ind006 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Garbsen ;
+        foaf:title "Amazon VZ Garbsen GmbH"@en ;
+        rdfs:label "Sixth place worked in"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind007
+:Ind007 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Lippstadt ;
+        foaf:title "Forvia Hella"@en ;
+        rdfs:label "Seventh place worked in" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind008
+:Ind008 rdf:type owl:NamedIndividual ,
+                 foaf:Organization .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Ind009
+:Ind009 rdf:type owl:NamedIndividual ,
+                 foaf:Organization .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Industrial
+:Industrial rdf:type owl:NamedIndividual ,
+                     :Entry_type ;
+            foaf:title "Developed and implemented PLC programs to ensure efficient and reliable control systems for industrial automation processes through effective programming using Siemens Step7."@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LASK001
+:LASK001 rdf:type owl:NamedIndividual ,
+                  :LanguageSkill ;
+         dc:description "Listening / Reading / Writing / Spoken Production / Spoken Interation"^^rdfs:Literal ;
+         :hasPercentage 100 ;
+         foaf:title "English Language"@en ;
+         foaf:status "100%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LASK002
+:LASK002 rdf:type owl:NamedIndividual ,
+                  :LanguageSkill ;
+         dc:description "Listening / Reading / Writing / Spoken Production / Spoken Interation"^^rdfs:Literal ;
+         :hasPercentage 100 ;
+         foaf:title "Igbo Language" ;
+         foaf:status "100%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LASK003
+:LASK003 rdf:type owl:NamedIndividual ,
+                  :LanguageSkill ;
+         dc:description "Listening / Reading / Writing / Spoken Production / Spoken Interation"^^rdfs:Literal ;
+         :hasPercentage "65" ;
+         foaf:title "German Language"@en ;
+         foaf:status "65%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LASK004
+:LASK004 rdf:type owl:NamedIndividual ,
+                  :LanguageSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/LASK005
+:LASK005 rdf:type owl:NamedIndividual ,
+                  :LanguageSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Lippstadt
+:Lippstadt rdf:type owl:NamedIndividual ,
+                    :City ;
+           :locatedIn :Germany ;
+           rdfs:label "Lippstadt"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/MachineLearning
+:MachineLearning rdf:type owl:NamedIndividual ,
+                          skos:Concept ;
+                 rdfs:label "Machine Learning"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Nigeria
+:Nigeria rdf:type owl:NamedIndividual ,
+                  :Country .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/NwiwuUzoma
+:NwiwuUzoma rdf:type owl:NamedIndividual ,
+                     foaf:Person ;
+            :hasProject :PR001 ,
+                        :PR002 ,
+                        :PR003 ,
+                        :PR004 ,
+                        :PR005 ,
+                        :PR006 ,
+                        :PR007 ,
+                        :PR008 ,
+                        :PR009 ,
+                        :PR010 ;
+            :hasSocial :FACE001 ,
+                       :GIT001 ,
+                       :INST001 ,
+                       :LINK001 ;
+            :provideService :SE001 ,
+                            :SE002 ,
+                            :SE003 ,
+                            :SE004 ,
+                            :SE005 ,
+                            :SE006 ;
+            :hasAchievement :CE001 ,
+                            :CE002 ,
+                            :CE003 ,
+                            :CE004 ,
+                            :CE005 ,
+                            :CE006 ,
+                            :CE007 ,
+                            :CE008 ,
+                            :CE009 ,
+                            :CE010 ,
+                            :CE011 ,
+                            :CE012 ;                            
+            :hasEducation :ED001 ,
+                          :ED002 ,
+                          :ED003 ;
+            :hasExperience :WOEX001 ,
+                           :WOEX002 ,
+                           :WOEX003 ,
+                           :WOEX004 ,
+                           :WOEX005 ,
+                           :WOEX006 ,
+                           :WOEX007 ;
+            :hasSkill :DISK001 ,
+                      :DISK002 ,
+                      :DISK003 ,
+                      :DISK004 ,
+                      :LASK001 ,
+                      :LASK002 ,
+                      :LASK003 ,
+                      :SOSK001 ,
+                      :SOSK002 ;
+            dc:description "A system analyst specializing in business driven system analysis, semantic integration, and improving data accessibility across complex development lifecycles (V-model). I design smart, connected systems that streamline engineering workflows and optimize product design and manufacturing. By modeling data flows and aligning technical solutions with real business needs, I help teams work faster and more transparently. I collaborate globally to shape intelligent roadmaps and share my expertise through coaching and training—making data accurate, accessible, and impactful."@en ;
+            :hasAddress "Paderborn, Germany"@en ;
+            :hasEmail "uzomanwiwu@gmail.com" ;
+            :hasPhone "+49 (1521) 214-9087" ;
+            foaf:title "Information Systems Analyst" ;
+            rdfs:label "Nwiwu Uzoma" ;
+            foaf:birthday "1992-08-14T00:00:00"^^xsd:dateTime ;
+            foaf:firstName "Uzoma" ;
+            foaf:lastName "Nwiwu" ;
+            foaf:status "assets/profile.jpg" .
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/KceniaTsvetkova
+:KceniaTsvetkova rdf:type owl:NamedIndividual ;
+                      
+            :hasProject :PR001 ,                       
+                        :PR008 ,
+                        :PR009 ,
+                        :PR010 ;
+            :hasSocial :FACE001 ,                     
+                       :LINK001 ;
+            :hasAchievement :CE001 ,
+                            :CE002 ,
+                            :CE003 ,
+                            :CE012 ;                            
+            :hasEducation :ED001 ,
+                          :ED003 ;
+            :hasExperience :WOEX001 ,
+                           :WOEX006 ,
+                           :WOEX007 ;
+            :hasSkill :DISK001 ,
+                      :DISK004 ,
+                      :SOSK001 ,
+                      :SOSK002 ;
+            dc:description "A system analyst specializing in business driven system analysis, semantic integration, and improving data accessibility across complex development lifecycles (V-model). I design smart, connected systems that streamline engineering workflows and optimize product design and manufacturing. By modeling data flows and aligning technical solutions with real business needs, I help teams work faster and more transparently. I collaborate globally to shape intelligent roadmaps and share my expertise through coaching and training—making data accurate, accessible, and impactful."@en ;
+            :hasAddress "Paderborn, Germany"@en ;
+            :hasEmail "ksusha1996@gmail.com" ;
+            :hasPhone "+49 (1521) 214-9087" ;
+            foaf:title "Human Resources Manager" ;
+            rdfs:label "Kcenia Tsvetkova" ;
+            foaf:birthday "1996-06-10T00:00:00"^^xsd:dateTime ;
+            foaf:firstName "Kcenia" ;
+            foaf:lastName "Tsvetkova" ;
+            foaf:status "assets/image_2.jpeg" .
+
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Owerri
+:Owerri rdf:type owl:NamedIndividual ,
+                 :City ;
+        :locatedIn :Nigeria ;
+        rdfs:label "Owerri"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR001
+:PR001 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :DataAnalysis ;
+       dc:description "Regression modeling, feature engineering, pricing strategy"^^rdfs:Literal ;
+       foaf:title "Optimized Price Predictor for Used Bicycle"@en ;
+       foaf:status "Regression modeling, feature engineering, pricing strategy"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR002
+:PR002 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :DataAnalysis ;
+       dc:description "Time-series analysis, sensor data, health metrics"^^rdfs:Literal ;
+       foaf:title "Smartwatch Data Analysis"@en ;
+       foaf:status "Time-series analysis, sensor data, health metrics"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR003
+:PR003 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :MachineLearning ;
+       dc:description "NLP, text classification, sequence labeling"^^rdfs:Literal ;
+       foaf:title "Named Entity Recognition"@en ;
+       foaf:status "NLP, text classification, sequence labeling"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR004
+:PR004 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Industrial ,
+                    :Research ;
+       foaf:theme :ScientificResearch ;
+       dc:description "Materials science, mechanical simulation, additive manufacturing"^^rdfs:Literal ;
+       foaf:title "Impact of Negative Poisson's Ratio on 3D Printed TPU Lattice Structures"@en ;
+       foaf:status "Materials science, mechanical simulation, additive manufacturing"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR005
+:PR005 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :DataAnalysis ;
+       dc:description "Financial forecasting, machine learning, volatility modeling"^^rdfs:Literal ;
+       foaf:title "Stock Price Prediction"@en ;
+       foaf:status "Financial forecasting, machine learning, volatility modeling"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR006
+:PR006 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Industrial ,
+                    :Research ;
+       foaf:theme :ControlSystem ;
+       dc:description "Model-based control, system identification, performance evaluation"^^rdfs:Literal ;
+       foaf:title "Control Optimal Model Selection for Dynamic Systems"@en ;
+       foaf:status "Model-based control, system identification, performance evaluation"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR007
+:PR007 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :MachineLearning ;
+       dc:description "Computer vision, image classification, deep learning"^^rdfs:Literal ;
+       foaf:title "CNN for Face Mask Detection"@en ;
+       foaf:status "Computer vision, image classification, deep learning"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR008
+:PR008 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Industrial ,
+                    :Research ;
+       foaf:theme :ControlSystem ;
+       dc:description "Industrial automation, rule-based systems, compliance tracking"^^rdfs:Literal ;
+       foaf:title "Factory Maintenance Intelligent Systems for Requirements and Compliance Control"@en ;
+       foaf:status "Industrial automation, rule-based systems, compliance tracking"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR009
+:PR009 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Database ,
+                    :Software ;
+       foaf:theme :DataAnalysis ;
+       dc:description "Condition monitoring, statistical diagnostics, reliability analysis"^^rdfs:Literal ;
+       foaf:title "Analysis of Transformer Oil Data"@en ;
+       foaf:status "Condition monitoring, statistical diagnostics, reliability analysis"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/PR010
+:PR010 rdf:type owl:NamedIndividual ,
+                foaf:Project ;
+       :hasCategory :Research ;
+       foaf:theme :ScientificResearch ;
+       dc:description "Electrical modeling, waveform analysis, power electronics"^^rdfs:Literal ;
+       foaf:title "Analysis of Parasitic Capacitances in Transformers"@en ;
+       foaf:status "Electrical modeling, waveform analysis, power electronics"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Research
+:Research rdf:type owl:NamedIndividual ,
+                   :Entry_type .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Russia
+:Russia rdf:type owl:NamedIndividual ,
+                 :Country .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SOSK001
+:SOSK001 rdf:type owl:NamedIndividual ,
+                  :SoftSkill ;
+         dc:description "Collaboration / Adaptability / Critical Thinking / Problem Solving / Presentation"^^rdfs:Literal ;
+         :hasPercentage 90 ;
+         foaf:title "Soft Skill"@en ;
+         foaf:status "90%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SOSK002
+:SOSK002 rdf:type owl:NamedIndividual ,
+                  :SoftSkill ;
+         dc:description "User-Centered / Cross-Functional Collaboration / Technical prototyping & Iteration / Data-Driven Decision Making / Project and Lifecycle Management / Microsoft Tools"^^rdfs:Literal ;
+         :hasPercentage 80 ;
+         foaf:title "Product Development" ;
+         foaf:status "80%" .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SOSK003
+:SOSK003 rdf:type owl:NamedIndividual ,
+                  :SoftSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SOSK004
+:SOSK004 rdf:type owl:NamedIndividual ,
+                  :SoftSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/SOSK005
+:SOSK005 rdf:type owl:NamedIndividual ,
+                  :SoftSkill .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Sch001
+:Sch001 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Owerri ;
+        foaf:title "Federal University of Technology Owerri"@en ;
+        rdfs:label "First university attended"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Sch002
+:Sch002 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :StPetersburg ;
+        foaf:title "Peter the Great St Petersburg State Polytechnic University"@en ;
+        rdfs:label "Second university attended"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Sch003
+:Sch003 rdf:type owl:NamedIndividual ,
+                 foaf:Organization ;
+        :locatedIn :Hannover ;
+        foaf:title "Leibniz University Hannover (LUH)" ;
+        rdfs:label "Third university attended"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Sch004
+:Sch004 rdf:type owl:NamedIndividual ,
+                 foaf:Organization .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Sch005
+:Sch005 rdf:type owl:NamedIndividual ,
+                 foaf:Organization .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/ScientificResearch
+:ScientificResearch rdf:type owl:NamedIndividual ,
+                             skos:Concept ;
+                    rdfs:label "Scientific Research"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/Software
+:Software rdf:type owl:NamedIndividual ,
+                   :Entry_type .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/StPetersburg
+:StPetersburg rdf:type owl:NamedIndividual ,
+                       :City ;
+              :locatedIn :Russia ;
+              rdfs:label "St. Petersburg"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX001
+:WOEX001 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind001 ;
+         :hasCategory :Industrial ,
+                      :Research ;
+         :hasDuty :DU001 ,
+                  :DU002 ,
+                  :DU003 ;
+         :endDate "2019-10-31T00:00:00"^^xsd:dateTime ;
+         :startDate "2017-10-01T00:00:00"^^xsd:dateTime ;
+         foaf:title "Production Machine Specialist"@en ;
+         rdfs:label "first work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX002
+:WOEX002 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind002 ;
+         :hasCategory :Industrial ,
+                      :Research ;
+         :hasDuty :DU004 ,
+                  :DU005 ,
+                  :DU006 ,
+                  :DU007 ;
+         :endDate "2022-06-30T00:00:00"^^xsd:dateTime ;
+         :startDate "2021-05-31T00:00:00"^^xsd:dateTime ;
+         foaf:title "Assistant Researcher - Oxygen free Production (Student Assistant)"@en ;
+         rdfs:label "Second work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX003
+:WOEX003 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind003 ;
+         :hasCategory :Industrial ,
+                      :Research ,
+                      :Software ;
+         :hasDuty :DU008 ,
+                  :DU009 ,
+                  :DU010 ,
+                  :DU011 ;
+         :endDate "2023-05-17T00:00:00"^^xsd:dateTime ;
+         :startDate "2022-04-11T00:00:00"^^xsd:dateTime ;
+         foaf:title "Assistant Project Coordinator - R&D Innovation (Working Student)"@en ;
+         rdfs:label "Third work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX004
+:WOEX004 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind004 ;
+         :hasCategory :Database ,
+                      :Research ,
+                      :Software ;
+         :hasDuty :DU012 ,
+                  :DU013 ,
+                  :DU014 ,
+                  :DU015 ;
+         :endDate "2023-06-30T00:00:00"^^xsd:dateTime ;
+         :startDate "2022-11-01T00:00:00"^^xsd:dateTime ;
+         foaf:title "Data Scientist and Software Optimizer (Student Assistant)"@en ;
+         rdfs:label "Fourth work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX005
+:WOEX005 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind005 ;
+         :hasCategory :Database ,
+                      :Research ,
+                      :Software ;
+         :hasDuty :DU016 ,
+                  :DU017 ,
+                  :DU018 ,
+                  :DU019 ;
+         :endDate "2024-02-28T00:00:00"^^xsd:dateTime ;
+         :startDate "2022-01-01T00:00:00"^^xsd:dateTime ;
+         foaf:title "Knowledge Graph Engineer - RDF Parser (Student Assistant)"@en ;
+         rdfs:label "fifth work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX006
+:WOEX006 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind006 ;
+         :hasDuty :DU020 ,
+                  :DU021 ;
+         :endDate "2024-10-31T00:00:00"^^xsd:dateTime ;
+         :startDate "2023-09-01T00:00:00"^^xsd:dateTime ;
+         foaf:title "FC Associate I"@en ;
+         rdfs:label "Sixth work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX007
+:WOEX007 rdf:type owl:NamedIndividual ,
+                  :WorkExperience ;
+         :doneAt :Ind007 ;
+         :hasCategory :Database ,
+                      :Industrial ,
+                      :Research ,
+                      :Software ;
+         :hasDuty :DU022 ,
+                  :DU023 ,
+                  :DU024 ;
+         :startDate "2024-11-01T00:00:00"^^xsd:dateTime ;
+         foaf:title "Function Solution Architect, Digitization"@en ;
+         rdfs:label "Seventh work experience"@en .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX008
+:WOEX008 rdf:type owl:NamedIndividual ,
+                  :WorkExperience .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX009
+:WOEX009 rdf:type owl:NamedIndividual ,
+                  :WorkExperience .
+
+
+###  http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/WOEX010
+:WOEX010 rdf:type owl:NamedIndividual ,
+                  :WorkExperience .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
