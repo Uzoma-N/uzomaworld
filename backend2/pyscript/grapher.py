@@ -12,7 +12,7 @@ from datetime import datetime
 # Override with the RESUME_GRAPH_PATH environment variable if needed.
 GRAPH_PATH = os.environ.get(
     "RESUME_GRAPH_PATH",
-    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "database", "resume.ttl"),
+    os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "database", "resume_v2.ttl"),
 )
 
 
@@ -190,7 +190,11 @@ class graphData:
 
         # 4. Process the results
         WorkExperience = []
+        Duties = {}  # experience URI -> {duty text: row}, ordered separately since aggregation loses order
         for row in results["results"]["bindings"]:
+            Duties.setdefault(str(row['experience']['value']), {})[str(row['dutyDescription']['value'])] = \
+                int(row['dutyRow']['value']) if 'dutyRow' in row else None
+
             WorkExperience.append({
                 'main': str(row['experience']['value']),
                 'workTitle': str(row['workTitle']['value']),
@@ -199,11 +203,15 @@ class graphData:
                 'country': self.process_uri_fragment(str(row['country']['value'])),
                 'startDate': self.format_date_string(str(row['startDate']['value']), 'year'),
                 'endDate': self.format_date_string(str(row['endDate']['value']), 'year') if 'endDate' in row else 'Present',
-                'dutyDescription': str(row['dutyDescription']['value']),
                 'category': self.process_uri_fragment(str(row['category']['value'])) if 'category' in row else ''
                 })
-        
-        jsonWorkExperience = self.aggregate_by_keys(WorkExperience, ['main'])            
+
+        jsonWorkExperience = self.aggregate_by_keys(WorkExperience, ['main'])
+
+        # duties with hasRow come first in ascending order, the rest keep query order
+        for experience in jsonWorkExperience:
+            duties = Duties[experience['main']]
+            experience['dutyDescription'] = sorted(duties, key=lambda d: (duties[d] is None, duties[d] or 0))
         return jsonWorkExperience
     
 
@@ -260,7 +268,12 @@ class graphData:
         
         # 4. Process the results
         Skill = []
+        SkillParts = {}  # skill URI -> {part title: part description} from "divided into"
         for row in results["results"]["bindings"]:
+            parts = SkillParts.setdefault(str(row['skill']['value']), {})
+            if 'partTitle' in row:
+                parts[str(row['partTitle']['value'])] = str(row['partDescription']['value']) if 'partDescription' in row else ''
+
             Skill.append({
                 'main': str(row['skill']['value']),
                 'skillTitle': str(row['skillTitle']['value']),
@@ -271,7 +284,11 @@ class graphData:
                 'skillDescription': str(row['skillDescription']['value']) if 'skillDescription' in row else ''        
         })
             
-        jsonSkill = self.aggregate_by_keys(Skill, ['main'])            
+        jsonSkill = self.aggregate_by_keys(Skill, ['main'])
+
+        # skills that are "divided into" sub-skills show those instead of their own description
+        for skill in jsonSkill:
+            skill['skillParts'] = [{'title': t, 'description': d} for t, d in SkillParts[skill['main']].items()]
         return jsonSkill
     
     def get_skill_types(self):

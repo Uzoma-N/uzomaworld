@@ -9,7 +9,8 @@ class rdfQueries:
     def get_prefix():
 
         prefix = """
-        PREFIX : <http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/> 
+        PREFIX : <http://www.semanticweb.org/uzoma/ontologies/2025/9/resume/>
+        PREFIX res: <http://www.semanticweb.org/uzoma/ontologies/2025/9/resume#>
         PREFIX dc: <http://purl.org/dc/elements/1.1/> 
         PREFIX owl: <http://www.w3.org/2002/07/owl#> 
         PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
@@ -92,7 +93,7 @@ class rdfQueries:
 
         Query_Experience = """
 
-            SELECT ?experience ?workTitle ?industryName ?city ?country ?endDate ?startDate ?dutyDescription ?category
+            SELECT ?experience ?workTitle ?industryName ?city ?country ?endDate ?startDate ?dutyDescription ?dutyRow ?category
             WHERE {{
                 <{person}> :hasExperience ?experience .
 
@@ -109,6 +110,7 @@ class rdfQueries:
 
                 ?duty foaf:title ?dutyDescription.
 
+            OPTIONAL {{ ?duty res:hasRow ?dutyRow }} .
             OPTIONAL {{ ?experience :endDate ?endDate }} .
             OPTIONAL {{ ?experience :hasCategory ?category }} .
             }}            
@@ -121,10 +123,10 @@ class rdfQueries:
 
         Query_Skill = """
 
-            SELECT ?skill ?skillTitle ?category ?percentageScore ?percentage ?skillDescription ?typename
+            SELECT ?skill ?skillTitle ?category ?percentageScore ?percentage ?skillDescription ?typename ?partTitle ?partDescription
             WHERE {{
                 <{person}> :hasSkill ?skill.
-                    
+
                 ?skill rdf:type ?skillType ;
                     :hasPercentage ?percentage ;
                     foaf:status ?percentageScore ;
@@ -135,9 +137,13 @@ class rdfQueries:
 
                 OPTIONAL {{ ?skill :hasCategory ?category }} .
                 OPTIONAL {{ ?skill dc:description ?skillDescription }} .
-                
+                OPTIONAL {{ ?skill res:dividedInto ?part .
+                         ?part foaf:title ?partTitle .
+                         OPTIONAL {{ ?part dc:description ?partDescription }} }} .
+
             }}
-            
+            ORDER BY ?partTitle
+
         """
         return Query_Skill
     
@@ -209,8 +215,10 @@ class rdfQueries:
                 OPTIONAL {{ ?project :hasCategory ?category }} .
                 OPTIONAL {{ ?project dc:description ?projectDescription }} .
                 OPTIONAL {{ ?project :hasLink ?projectLink }} .
+                OPTIONAL {{ ?project res:hasRow ?projectRow }} .
             }}
-            
+            ORDER BY DESC(?projectRow)
+
         """
         return Query_Project
     
@@ -241,10 +249,9 @@ class rdfQueries:
             WHERE {{
                 <{person}> :hasSocial ?social.
 
-                ?social rdf:type ?socialType ;
+                ?social rdf:type :Socials ;
+                    foaf:title ?socialType ;
                     :hasLink ?socialLink .
-
-                ?socialType rdfs:subClassOf :Socials.
 
                 }}
         """
@@ -261,7 +268,7 @@ class rdfQueries:
                 ?intermediateNode :hasCategory ?category .
                 ?category rdf:type :Entry_type.
 
-                FILTER (?personRelation IN (:hasExperience, :hasSkill, :hasAchievement, :hasproject))
+                FILTER (?personRelation IN (:hasExperience, :hasSkill, :hasAchievement, :hasProject))
                 }}
         """
         return Query_Category    

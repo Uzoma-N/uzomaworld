@@ -187,14 +187,20 @@ export function createSkillHTML(skill) {
     // const htmlString = dutiesArray.join('<br>');
     let part_3 = ''
     //console.log("Skill Data Array:", skill.skillTitle);
+
+    // skills divided into sub-skills show "<b>title</b>: description" per sub-skill instead of their own description
+    const skillText = (skill.skillParts && skill.skillParts.length > 0)
+        ? skill.skillParts.map(part => `<b>${part.title}</b>: ${part.description}`).join('<br>')
+        : skill.skillDescription;
+
     const part_1 =      `
                             <li class="skills-item active" data-category="${skill.category}" data-skill-group="${skill.typename}">
                                 <div class="title-wrapper">
-                                    <h5 class="h5">${skill.skillTitle}</h5>                                                    
+                                    <h5 class="h5">${skill.skillTitle}</h5>
                                     <data value="${skill.percentage}">${skill.percentageScore}</data>
-                                </div>   
+                                </div>
                                 <p class="skill-text">
-                                    ${skill.skillDescription}
+                                    ${skillText}
                                 </p>   `
     const part_2 =      `
                                 <div class="category">   `
