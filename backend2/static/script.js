@@ -23,6 +23,7 @@ const applyFilterBtn = document.getElementById('apply-filter-btn');
 // State Variables
 let profileURIs = {}; // Stores name -> URI mapping fetched from API
 let selectedCategories = ['All']; // Stores current filter state (default is All)
+const DEFAULT_CATEGORY = 'database'; // CV category ticked when a profile loads
 
 // --- Get the data from the dedicated script block ---
 function getAllData() {
@@ -66,6 +67,7 @@ function renderAllData() {
     getCertification(CV_DATA.Certificate);
     getProjectClass(CV_DATA.ProjectClass);
     getProject(CV_DATA.Project);
+    applyCategoryFilter(); // apply the default category ticked in getCategories
 
     // 2. Attach the listener for the 'Change Profile' button
     changeProfileBtn.addEventListener('click', fetchFilteredCV);
@@ -217,14 +219,17 @@ function getCategories(Category_Data){
     listCategory.innerHTML = ''; // Clear previous content    
     //const Category_Data = CV_DATA.Category
 
+    // Start on the default category; fall back to 'All' if this profile doesn't have it
+    const hasDefault = (Category_Data || []).some(cat => String(cat.main).toLowerCase() === DEFAULT_CATEGORY);
+
     let categoryHtmlContent = `
                                 <label class="category-item">
-                                    <input type="checkbox" data-value="all" checked>
+                                    <input type="checkbox" data-value="all" ${hasDefault ? '' : 'checked'}>
                                     <span>All</span>
                                 </label>  `
     if (Category_Data && Category_Data.length > 0) {
         Category_Data.forEach(cat => {
-            categoryHtmlContent += createCatHTML(cat)
+            categoryHtmlContent += createCatHTML(cat, String(cat.main).toLowerCase() === DEFAULT_CATEGORY)
             // console.log("Ed Data Array:", study);
         });   
         listCategory.innerHTML = categoryHtmlContent     
@@ -587,7 +592,8 @@ async function fetchFilteredCV() {
         getCertification(filteredCV_JSON.Certificate);
         getProjectClass(filteredCV_JSON.ProjectClass);
         getProject(filteredCV_JSON.Project);
-        
+        applyCategoryFilter(); // apply the default category ticked in getCategories
+
         // Call your dedicated function to process the filtered RDF data 
         // and insert the necessary HTML into listProject.
         //renderCV(filteredData); 

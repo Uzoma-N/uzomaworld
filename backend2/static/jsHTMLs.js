@@ -122,11 +122,11 @@ export function createSocialHTML(social) {
     `;
 }
 
-export function createCatHTML(cat) {
-    
+export function createCatHTML(cat, checked = false) {
+
     return `
                 <label class="category-item">
-                    <input type="checkbox" data-value="${cat.main.toLowerCase()}">
+                    <input type="checkbox" data-value="${cat.main.toLowerCase()}" ${checked ? 'checked' : ''}>
                     <span>${cat.main}</span>
                 </label> `;
 }
