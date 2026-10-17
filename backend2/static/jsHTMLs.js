@@ -190,7 +190,7 @@ export function createSkillHTML(skill) {
 
     // skills divided into sub-skills show "<b>title</b>: description" per sub-skill instead of their own description
     const skillText = (skill.skillParts && skill.skillParts.length > 0)
-        ? skill.skillParts.map(part => `<b>${part.title}</b>: ${part.description}`).join('<br>')
+        ? skill.skillParts.map(part => `<span class="skill-part-title">${part.title}:</span> ${part.description}`).join('<br>')
         : skill.skillDescription;
 
     const part_1 =      `

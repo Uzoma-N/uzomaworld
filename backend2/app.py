@@ -3,11 +3,23 @@ __author__ = 'Nwiwu Uzoma'
 
 from flask import Flask, render_template, jsonify, request
 from pyscript.grapher import graphData
+import hashlib
 import json
 import os
 import re
 
 app = Flask(__name__)
+
+
+@app.context_processor
+def inject_asset_version():
+    """Short hash of the static css/js files, appended to their URLs so browsers
+    (and GitHub Pages' cache) load the new files as soon as they change."""
+    digest = hashlib.md5()
+    for name in ('style.css', 'script.js', 'jsHTMLs.js'):
+        with open(os.path.join(app.static_folder, name), 'rb') as f:
+            digest.update(f.read())
+    return {'asset_version': digest.hexdigest()[:10]}
 
 # --- Flask Route ---
 @app.route('/', methods=['GET', 'POST'])

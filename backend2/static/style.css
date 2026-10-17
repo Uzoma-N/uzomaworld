@@ -972,6 +972,12 @@ display: flex;
     font-size: var(--fs-8);
     font-weight: var(--fw-300);
   }
+
+  /* header of a sub-skill ("divided into"), e.g. "AI Integration:" */
+  .skill-part-title {
+    color: var(--white-2);
+    font-weight: var(--fw-600);
+  }
   .skill-progress-fill {
     background: var(--text-gradient-yellow);
     height: 100%;

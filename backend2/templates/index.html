@@ -20,7 +20,7 @@
   -->
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}"
+      href="{{ url_for('static', filename='style.css', v=asset_version) }}"
     />
 
     <!--
@@ -308,9 +308,14 @@
     <!--
     - ionicon link
   -->
-    <script 
+    <!-- version tags force browsers to fetch fresh scripts after every change;
+         the import map does the same for the module script.js imports -->
+    <script type="importmap">
+      { "imports": { "./static/jsHTMLs.js": "./static/jsHTMLs.js?v={{ asset_version }}" } }
+    </script>
+    <script
       type="module"
-      src="{{ url_for('static', filename='script.js') }}">
+      src="{{ url_for('static', filename='script.js', v=asset_version) }}">
     </script>
     <script
       type="module"
