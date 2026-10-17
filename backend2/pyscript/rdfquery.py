@@ -142,7 +142,7 @@ class rdfQueries:
                          OPTIONAL {{ ?part dc:description ?partDescription }} }} .
 
             }}
-            ORDER BY ?partTitle
+            ORDER BY DESC(xsd:integer(STR(?percentage))) ?partTitle
 
         """
         return Query_Skill
