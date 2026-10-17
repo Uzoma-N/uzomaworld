@@ -858,8 +858,17 @@
   }
   
   .work-text{
-  list-style-type: none;      
-  padding-left: 20px;     
+  list-style-type: none;
+  padding-left: 20px;
+  }
+
+  .work-text .timeline-text {
+  font-size: var(--fs-7);
+  line-height: 1.5;
+  }
+
+  .work-text li + li {
+  margin-top: 10px;           /* space between duties */
   }
 
   .work-text p::before {
