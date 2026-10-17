@@ -147,13 +147,16 @@ export function createExperienceHTML(experience) {
                                 <span>${experience.startDate} — ${experience.endDate}</span>
                             </div>
 
-                            <p class="timeline-text">                  
-                                ${experience.industryName} - ${experience.city}, ${experience.country}
-                            </p> `
+                            <div class="exp-meta">
+                                <p class="timeline-text">
+                                    ${experience.industryName} - ${experience.city}, ${experience.country}
+                                </p> `
     const part_2 =      `
-                            <div class="category">   `
-    const part_4 =      `     
-                            </div>       `
+                                <div class="category">   `
+    const part_4 =      `
+                                </div>       `
+    const part_meta_end = `
+                            </div> `
 
     const part_5 =      `
                             <ul class="work-text">  `
@@ -175,11 +178,11 @@ export function createExperienceHTML(experience) {
     // return `${part_1}, ${part_2}, ${part_3}, ${part_4}, ${part_5} ${part_6}, ${part_7}`  ;
 
     if (part_3 !== '' ) {
-        return `${part_1} ${part_2} ${part_3} ${part_4} ${part_5} ${part_6} ${part_7}` ;
+        return `${part_1} ${part_2} ${part_3} ${part_4} ${part_meta_end} ${part_5} ${part_6} ${part_7}` ;
     } else{
-        return `${part_1} ${part_5} ${part_6} ${part_7}`  ;
+        return `${part_1} ${part_meta_end} ${part_5} ${part_6} ${part_7}`  ;
     };
-}   
+}
 
 export function createSkillHTML(skill) {
 

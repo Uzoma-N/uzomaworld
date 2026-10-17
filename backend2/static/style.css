@@ -908,6 +908,24 @@
 display: flex;
 }
 
+/* company/location on the left, category tags on the right under the date */
+.exp-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;            /* tags drop below the company on narrow screens */
+  gap: 6px 15px;
+  margin-bottom: 8px;
+}
+
+.exp-meta .category {
+  gap: 4px;
+}
+
+.exp-meta .category-tag {
+  margin-top: 0;
+}
+
 .category-tag {
   align-self: flex-start; /* Ensures tag only takes necessary width */
   padding: 3px 5px;
@@ -975,6 +993,7 @@ display: flex;
 
   /* header of a sub-skill ("divided into"), e.g. "AI Integration:" */
   .skill-part-title {
+    display: inline;            /* override the global span { display: block } */
     color: var(--white-2);
     font-weight: var(--fw-600);
   }
